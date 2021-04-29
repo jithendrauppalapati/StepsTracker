@@ -22,18 +22,20 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
-    private TextView steps, cal, kilometers, time, currentTime;
+    private TextView steps, cal, kilometers, time, currentTime, highSteps;
     private SensorManager sensorManager;
     private Sensor stepSensor, stepDetector;
     int stepCount = 0, min = 0, stepsWalked = 0, stepDetect = 0;
     float calories = 0f, kMeters = 0f, test;
     SharedPreferences prefs;
     private CardView stepsCard;
+    ArrayList<Integer> highest;
 
 
     @Override
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         time = findViewById(R.id.time);
         currentTime = findViewById(R.id.currentTime);
         stepsCard = findViewById(R.id.stepsCard);
+        highSteps = findViewById(R.id.highSteps);
+        highest = new ArrayList<>(10);
 
         stepsCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +77,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         SharedPreferences myPrefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         stepsWalked = myPrefs.getInt("Steps", 0);
         currentTime.setText("Prevoius Steps:" + stepsWalked);
-
-
+        Log.d("Count1", String.valueOf(stepCount));
     }
 
     @Override

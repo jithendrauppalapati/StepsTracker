@@ -221,6 +221,11 @@
         android:text="Previous Steps"
         android:layout_marginTop="10dp" />
 
+    <TextView
+        android:id="@+id/highSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This previous steps are the no of steps that you have done before closing the app" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
